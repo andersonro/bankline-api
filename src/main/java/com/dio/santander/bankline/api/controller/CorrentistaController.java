@@ -28,4 +28,14 @@ public class CorrentistaController {
     public void save(@RequestBody CorrentistaNovo correntistaNovo){
         service.save(correntistaNovo);
     }
+
+    @DeleteMapping
+    public void delete(@RequestBody Integer id){
+        Correntista correntista = repository.findById(id).orElse(null);
+
+        if (correntista != null){
+            repository.delete(correntista);
+        }
+
+    }
 }
