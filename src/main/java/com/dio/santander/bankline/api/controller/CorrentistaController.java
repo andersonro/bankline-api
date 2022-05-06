@@ -1,5 +1,6 @@
 package com.dio.santander.bankline.api.controller;
 
+import com.dio.santander.bankline.api.dto.CorrentistaDelete;
 import com.dio.santander.bankline.api.dto.CorrentistaNovo;
 import com.dio.santander.bankline.api.model.Correntista;
 import com.dio.santander.bankline.api.repository.CorrentistaRepository;
@@ -30,12 +31,7 @@ public class CorrentistaController {
     }
 
     @DeleteMapping
-    public void delete(@RequestBody Integer id){
-        Correntista correntista = repository.findById(id).orElse(null);
-
-        if (correntista != null){
-            repository.delete(correntista);
-        }
-
+    public void delete(@RequestBody CorrentistaDelete correntistaDelete){
+        service.delete(correntistaDelete);
     }
 }

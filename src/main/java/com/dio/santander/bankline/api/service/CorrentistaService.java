@@ -1,5 +1,6 @@
 package com.dio.santander.bankline.api.service;
 
+import com.dio.santander.bankline.api.dto.CorrentistaDelete;
 import com.dio.santander.bankline.api.dto.CorrentistaNovo;
 import com.dio.santander.bankline.api.model.Conta;
 import com.dio.santander.bankline.api.model.Correntista;
@@ -28,5 +29,13 @@ public class CorrentistaService {
         correntista.setConta(conta);
 
         repository.save(correntista);
+    }
+
+    public void delete(CorrentistaDelete correntistaDelete){
+        Correntista correntista = repository.findById(correntistaDelete.getId()).orElse(null);
+
+        if (correntista != null){
+            repository.delete(correntista);
+        }
     }
 }
